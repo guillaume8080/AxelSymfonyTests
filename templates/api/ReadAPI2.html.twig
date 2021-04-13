@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<h1>readData</h1>
+{%for inc in data.allLiveFranceData%}
+
+	<a href= "/">{{inc.nom}}</a>
+	<br>
+
+{% endfor %}
+
+
+
+{% endblock %}

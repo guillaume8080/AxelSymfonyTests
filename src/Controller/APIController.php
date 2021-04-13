@@ -20,6 +20,18 @@ class APIController extends AbstractController
         $this->client = $client;
     }
 
+    private function getDynamic(string $var) : array{
+
+    	$response = $this->client->request(
+
+    		'GET',
+    		'https://coronavirusapi-france.now.sh/'. $var);
+
+    	return $response->toArray();
+
+
+    }
+
     //fonction de get sur une api
     public function getData() :array{
 
@@ -50,9 +62,21 @@ class APIController extends AbstractController
     public function read(): Response
     {
     	
-    	dd($this->getData());
+    	$data= $this->getData();
         return $this->render('api/ReadAPI.html.twig', [
-            'controller_name' => 'APIController',
+            'controller_name' => 'APIController', 'data'=>$data
+        ]);
+    }
+
+    /**
+     * @Route("/a/p/i3", name="a_p_i3")
+     */
+    public function read2(): Response
+    {
+    	
+    	$data= $this->getDynamic("AllLiveData");
+        return $this->render('api/ReadAPI2.html.twig', [
+            'controller_name' => 'APIController', 'data'=>$data
         ]);
     }
 }
