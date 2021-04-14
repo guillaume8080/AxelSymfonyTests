@@ -1,2 +1,17 @@
-<h1>toto</h1>
+<h1>Detail d un objet </h1>
 <h1>{{ valeurCle }}</h1>
+
+<br>
+{%for inc in data.allLiveFranceData%}
+	
+	{% if  inc.nom == valeurCle  %}
+
+		<p>afficher le detail d un element embedded resolu</p>
+		<br>
+		<p>{{inc.nom}}</p>
+		<p>gueris :</p>
+		<p>{{inc.gueris}}</p>
+
+	{% endif %}
+
+{% endfor %}
