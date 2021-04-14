@@ -46,6 +46,8 @@ class APIController extends AbstractController
 
     }
 
+
+
     /**
      * @Route("/a/p/i", name="a_p_i")
      */
@@ -75,8 +77,24 @@ class APIController extends AbstractController
     {
     	
     	$data= $this->getDynamic("AllLiveData");
+    	
         return $this->render('api/ReadAPI2.html.twig', [
             'controller_name' => 'APIController', 'data'=>$data
         ]);
     }
+
+    /**
+     * @Route("/a/p/i/detailUnObjet/{value}", name="a_p_i_detail")
+     */
+    public function detailDepartement(string $value): Response
+    {
+    	//$path = "LiveDataByDepartment?Department=" . $value;
+    	
+    	$data= $this->getDynamic("AllLiveData");
+
+        return $this->render('api/ReadApi3.html.twig', [
+            'controller_name' => 'APIController', 'data'=>$data , 'valeurCle'=>$value
+        ]);
+    }
+
 }

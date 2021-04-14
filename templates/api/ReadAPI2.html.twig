@@ -4,7 +4,7 @@
 <h1>readData</h1>
 {%for inc in data.allLiveFranceData%}
 
-	<a href= "/">{{inc.nom}}</a>
+	<a href= "{{ path('a_p_i_detail', {value:inc.nom}) }}">{{inc.nom}}</a>
 	<br>
 
 {% endfor %}
