@@ -97,4 +97,27 @@ class APIController extends AbstractController
         ]);
     }
 
+
+
+    /**
+     * @Route("/a/p/i/postTest", name="a_p_i_post")
+     */
+    public function  monPremierPost():Response {
+
+    	$response = $this->client->request(
+
+    		'POST',
+    		'http://localhost:3000/posts',[
+    		'json' => ['tutu' => 'est michtu' , 'titi' => 'est michti' ]
+
+    	]);
+    	 
+    	return $this->render('api/printReqResp.html.twig' , [
+    		'resp'=>$response ] );
+    	
+
+    }
+
+
+
 }
