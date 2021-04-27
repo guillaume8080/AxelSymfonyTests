@@ -118,6 +118,44 @@ class APIController extends AbstractController
 
     }
 
+    /**
+     * @Route("/a/p/i/putTest", name="a_p_i_put")
+     */
+    public function monPremierPut():Response{
+
+    	$response = $this->client->request(
+
+    		'PUT',
+    		'http://localhost:3000/posts/2',[
+    		'json' => ['toto' => 'putDone' , 'tata' => 'putDone' ]
+    		]
+    	);
+
+    	return $this->render('api/printReqResp.html.twig' , [
+    		'resp'=>$response ] );
+
+    }
+
+    /**
+     * @Route("/a/p/i/deleteTest", name="a_p_i_delete")
+     */
+    public function monPremDelete():Response{
+
+    	$response = $this->client->request(
+
+    		'DELETE',
+    		'http://localhost:3000/posts/2'
+
+
+    	);
+    	return $this->render('api/printReqResp.html.twig' , [
+    		'resp'=>$response ] );
+
+    }
+
+
+
+
 
 
 }
